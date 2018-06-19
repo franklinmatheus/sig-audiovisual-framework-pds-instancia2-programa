@@ -12,7 +12,7 @@ import com.imd.telemaco.entity.enums.Classification;
  * @author Shirley Ohara Telemaco de Freitas (shirleyohara@ufrn.edu.br)
  * @version 4 de jun de 2018 | 11:06:36
  */
-public class Program extends AudioVisual {
+public class Program extends Audiovisual {
 
     private String TVchannel;
     private Clock schedule;
