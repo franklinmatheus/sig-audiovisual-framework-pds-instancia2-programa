@@ -5,12 +5,12 @@
 --%>
 
 
-<%@page import="com.imd.telemaco.entity.Series"%>
+<%@page import="com.imd.telemaco.entity.Program"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.imd.telemaco.entity.User"%>
 <%@page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 <%
-	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     User logged = new User();
     if (session.getAttribute("logged") == null) {
         response.sendRedirect("Login.jsp");
@@ -18,7 +18,7 @@
         logged = (User) (session.getAttribute("logged"));
     }
 
-    ArrayList<Series> list = (ArrayList<Series>) session.getAttribute("seriesList");
+    ArrayList<Program> list = (ArrayList<Program>) session.getAttribute("audiovisualList");
 %>
 <!DOCTYPE html>
 <html>
@@ -29,11 +29,11 @@
     <body>
         <h1>This is your logged page! </h1><br/>
         Welcome, <%=logged.getName()%><br/>
-        <a href="RegisterSerie.jsp">Register serie</a><br/>
+        <a href="RegisterProgram.jsp">Register program</a><br/>
         <a href="UpdatePassword.jsp">Update password</a><br/>
 
-        <form action="SelectAllSeries" method="post">
-            <button type="submit"> ver series </button>
+        <form action="SelectAllPrograms" method="post">
+            <button type="submit"> ver programes </button>
         </form>
         <br/>
         <h2>Your informations:</h2>
@@ -44,32 +44,31 @@
         <b>Password: </b><%=logged.getPassword()%><br/>
         <b>Gender: </b><%=logged.getGender()%><br/>
 
-        <form name="search" action="SearchSerie">
+        <form name="search" action="SearchProgram">
             <input type="search" required name="input" />
             <input type="submit" value="Search" />
         </form>
 
         <div>
-            <h2>Your series</h2>
+            <h2>Your programs</h2>
             <%
-            	if (list.isEmpty()) {
+                if (list.isEmpty()) {
             %>
-            <p>You have no series in your list!</p>
+            <p>You have no programs in your list!</p>
             <%
-            	} else {
-                            for (Series serie : list) {
+            } else {
+                for (Program program : list) {
             %>
             <p> 
-            <form action="RemoveSerieFromList" method="GET">
-                <a href="SelectSerie?id=<%=serie.getId()%>"> <%=serie.getName()%> </a> 
-                <input type="hidden" name="idSerie" value="<%=serie.getId()%>" />
+            <form action="RemoveAudiovisualFromList" method="GET">
+                <a href="SelectProgram?id=<%=program.getId()%>"> <%=program.getName()%> </a> 
+                <input type="hidden" name="idAudiovisual" value="<%=program.getId()%>" />
                 <input type="hidden" name="idUser" value="<%=logged.getId()%>" />
                 <input type="submit" value="Remove from list" />
             </form>
-            </p>
             <%
+                    }
                 }
-            }
             %>
         </div>
 

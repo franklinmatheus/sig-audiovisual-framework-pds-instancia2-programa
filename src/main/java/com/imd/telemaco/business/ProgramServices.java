@@ -19,11 +19,6 @@ import java.util.ArrayList;
 public class ProgramServices extends AudiovisualServices {
 
     @Override
-    public void initialize() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public void validate(Audiovisual audiovisual) throws AudiovisualInvalidException, DatabaseException, CloseConnectionException, BusinessException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
